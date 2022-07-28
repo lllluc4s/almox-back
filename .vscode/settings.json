@@ -5,13 +5,13 @@
         "authProtocol": "default"
       },
       "previewLimit": 50,
-      "server": "localhost",
+      "server": "127.0.0.1",
       "port": 3306,
       "driver": "MySQL",
       "name": "almoxarifado",
       "database": "almoxarifado",
-      "username": "root",
-      "password": "1234"
+      "username": "sail",
+      "password": "password"
     }
   ]
 }

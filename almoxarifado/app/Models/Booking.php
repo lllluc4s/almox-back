@@ -9,6 +9,7 @@ class Booking extends Model
 {
 	use HasFactory;
 
+	// RELACIONAMENTOS
 	public function user()
 	{
 		return $this->belongsTo(User::class);
@@ -18,4 +19,5 @@ class Booking extends Model
 	{
 		return $this->belongsTo(Equipment::class);
 	}
+	//=======================================================================
 }

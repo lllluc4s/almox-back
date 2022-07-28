@@ -13,6 +13,7 @@ class User extends Authenticatable
 {
 	use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
+	// RELACIONAMENTOS
 	public function equipment()
 	{
 		return $this->hasMany(Equipment::class);
@@ -22,6 +23,7 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Booking::class);
 	}
+	//=======================================================================
 
 	/**
 	 * The attributes that are mass assignable.

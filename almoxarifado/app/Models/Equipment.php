@@ -9,6 +9,7 @@ class Equipment extends Model
 {
 	use HasFactory;
 
+	// RELACIONAMENTOS
 	public function user()
 	{
 		return $this->belongsTo(User::class);
@@ -18,4 +19,5 @@ class Equipment extends Model
 	{
 		return $this->hasMany(Booking::class);
 	}
+	//=======================================================================
 }
