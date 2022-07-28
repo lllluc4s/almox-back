@@ -62,14 +62,24 @@ class DatabaseSeeder extends Seeder
 		]);
 		$userAdmin->assignRole($role1);
 
-		$user = \App\Models\User::factory()->create([
+		$user1 = \App\Models\User::factory()->create([
 			'id' => 2,
-			'name' => 'User',
-			'email' => 'user@user.com',
+			'name' => 'User1',
+			'email' => 'user1@user.com',
 			'email_verified_at' => now(),
 			'password' => '1234',
 			'remember_token' => '',
 		]);
-		$user->assignRole($role2);
+		$user1->assignRole($role2);
+
+		$user2 = \App\Models\User::factory()->create([
+			'id' => 3,
+			'name' => 'User2',
+			'email' => 'user2@user.com',
+			'email_verified_at' => now(),
+			'password' => '1234',
+			'remember_token' => '',
+		]);
+		$user2->assignRole($role2);
 	}
 }

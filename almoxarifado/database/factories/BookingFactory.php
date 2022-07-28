@@ -18,10 +18,10 @@ class BookingFactory extends Factory
 	{
 		return [
 			'id' => $this->faker->unique()->randomNumber(5),
-			'equipment_id' => $this->faker->randomElement([1, 2, 3, 4, 5]),
-			'user_id' => $this->faker->randomElement([1, 2, 3, 4, 5]),
-			'booking_date' => $this->faker->dateTimeBetween('now', '+1 years'),
-			'return_date' => $this->faker->dateTimeBetween('now', '+1 years'),
+			'equipment_id' => $this->faker->randomElement([1, 2]),
+			'user_id' => $this->faker->randomElement([1, 2, 3]),
+			'date' => $this->faker->dateTimeBetween('now', '+1 years'),
+			'trasaction' => $this->faker->randomElement(['Entrada', 'Saída']),
 		];
 	}
 }
