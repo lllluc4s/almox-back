@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 // importar faker
 use Faker\Factory as Faker;
@@ -19,9 +20,11 @@ class EquipmentFactory extends Factory
 	 */
 	public function definition()
 	{
+		$user = User::all()->pluck('id')->toArray();
+
 		return [
-			'id' => $this->faker->unique()->randomNumber(2),
-			'name' => $this->faker->randomElement(['PC Desktop', 'Notebook']),
+			'user_id' => $this->faker->randomElement($user),
+			'type' => $this->faker->randomElement(['PC Desktop', 'Notebook']),
 			'brand' => $this->faker->randomElement(['Dell', 'Apple']),
 			'patrimony' => $this->faker->randomElement(['Braip-01', 'Braip-02']),
 			'status' => $this->faker->randomElement(['Disponível', 'Indisponível']),

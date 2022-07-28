@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 // use App\Models\User;
 
+use App\Models\Booking;
 use App\Models\Equipment;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -28,8 +29,6 @@ class DatabaseSeeder extends Seeder
 		// 		'name' => 'Admin',
 		// 		'email' => 'admin@admin.com',
 		// 	]);
-
-		Equipment::factory(2)->create();
 
 		$this->faker = Faker::create('pt_BR');
 
@@ -81,5 +80,9 @@ class DatabaseSeeder extends Seeder
 			'remember_token' => '',
 		]);
 		$user2->assignRole($role2);
+
+		Equipment::factory(2)->create();
+
+		Booking::factory(2)->create();
 	}
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Equipment;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,12 +18,14 @@ class BookingFactory extends Factory
 	 */
 	public function definition()
 	{
+		$user = User::all()->pluck('id')->toArray();
+		$equipment = Equipment::all()->pluck('id')->toArray();
+
 		return [
-			'id' => $this->faker->unique()->randomNumber(5),
-			'equipment_id' => $this->faker->randomElement([1, 2]),
-			'user_id' => $this->faker->randomElement([1, 2, 3]),
+			'user_id' => $this->faker->randomElement($user),
+			'equipment_id' => $this->faker->randomElement($equipment),
 			'date' => $this->faker->dateTimeBetween('now', '+1 years'),
-			'trasaction' => $this->faker->randomElement(['Entrada', 'Saída']),
+			'transaction' => $this->faker->randomElement(['Entrada', 'Saída']),
 		];
 	}
 }

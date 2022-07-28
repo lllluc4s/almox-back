@@ -13,12 +13,18 @@ return new class extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('booking', function (Blueprint $table) {
+		Schema::create('bookings', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('equipment_id')->constrained('equipment');
-			$table->foreignId('user_id')->constrained('users');
+			$table->index(['id' => 'id']);
+
+			$table->unsignedBigInteger('user_id');
+			$table->foreign('user_id')->references('id')->on('users');
+
+			$table->unsignedBigInteger('equipment_id');
+			$table->foreign('equipment_id')->references('id')->on('equipment');
+
 			$table->date('date');
-			$table->string('trasaction');
+			$table->string('transaction');
 			$table->timestamps();
 		});
 	}
