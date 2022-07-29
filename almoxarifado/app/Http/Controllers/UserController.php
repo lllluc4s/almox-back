@@ -20,15 +20,15 @@ class UserController extends Controller
 		return response()->json($users);
 	}
 
-	/**
-	 * Leva para a rota de criação de usuário.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		return response()->json(['message' => 'Criar usuário']);
-	}
+	// /**
+	//  * Leva para a rota de criação de usuário.
+	//  *
+	//  * @return \Illuminate\Http\Response
+	//  */
+	// public function create()
+	// {
+	// 	return response()->json(['message' => 'Criar usuário']);
+	// }
 
 	/**
 	 * Salva um novo usuário.
@@ -62,16 +62,16 @@ class UserController extends Controller
 		return response()->json($user);
 	}
 
-	/**
-	 * Leva para a rota de edição de usuário.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		return response()->json(['message' => 'Editar usuário']);
-	}
+	// /**
+	//  * Leva para a rota de edição de usuário.
+	//  *
+	//  * @param  int  $id
+	//  * @return \Illuminate\Http\Response
+	//  */
+	// public function edit($id)
+	// {
+	// 	return response()->json(['message' => 'Editar usuário']);
+	// }
 
 	/**
 	 * Atualiza um usuário específico.
