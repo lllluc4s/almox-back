@@ -13,6 +13,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\PermissionRegistrar;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -56,7 +57,7 @@ class DatabaseSeeder extends Seeder
 			'name' => 'Admin',
 			'email' => 'admin@admin.com',
 			'email_verified_at' => now(),
-			'password' => '1234',
+			'password' => Hash::make('1234'),
 			'remember_token' => '',
 		]);
 		$userAdmin->assignRole($role1);
@@ -66,7 +67,7 @@ class DatabaseSeeder extends Seeder
 			'name' => 'User1',
 			'email' => 'user1@user.com',
 			'email_verified_at' => now(),
-			'password' => '1234',
+			'password' => Hash::make('1234'),
 			'remember_token' => '',
 		]);
 		$user1->assignRole($role2);
@@ -76,7 +77,7 @@ class DatabaseSeeder extends Seeder
 			'name' => 'User2',
 			'email' => 'user2@user.com',
 			'email_verified_at' => now(),
-			'password' => '1234',
+			'password' => Hash::make('1234'),
 			'remember_token' => '',
 		]);
 		$user2->assignRole($role2);

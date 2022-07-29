@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,23 @@ use Illuminate\Support\Facades\Route;
 // 	return $request->user();
 // });
 
-Route::get('/users', 'App\Http\Controllers\UserController@index');
+// Route::get('/login', function () {
+// 	$credentials = [
+// 		'email' => 'admin@admin.com',
+// 		'password' => '1234'
+// 	];
+
+// 	if (Auth::attempt($credentials)) {
+// 		request()->session()->regenerate();
+
+// 		return auth()->user();
+// 	}
+
+// 	abort(401);
+// });
+
+Route::get('/users', 'App\Http\Controllers\UserController@index')->middleware('auth:sanctum');
+
+Route::get('/equipments', 'App\Http\Controllers\EquipmentController@index')->middleware('auth:sanctum');
+
+Route::get('/bookings', 'App\Http\Controllers\BookingController@index',)->middleware('auth:sanctum');
