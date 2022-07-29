@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -45,7 +46,7 @@ class UserController extends Controller
 		$user = new User();
 		$user->name = $request->name;
 		$user->email = $request->email;
-		$user->password = $request->password;
+		$user->password = Hash::make($request->password);
 		$user->save();
 
 		echo "Usuário criado com sucesso!" . PHP_EOL;
@@ -64,7 +65,7 @@ class UserController extends Controller
 		$user = User::findOrFail($id);
 		$user->name = $request->name;
 		$user->email = $request->email;
-		$user->password = $request->password;
+		$user->password = Hash::make($request->password);
 		$user->save();
 
 		echo "Usuário alterado com sucesso!" . PHP_EOL;

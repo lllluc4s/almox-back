@@ -30,12 +30,12 @@ InertiaProgress.init({ color: "#4B5563" });
 
 // AXIOS ROUTES
 
-(async () => {
-	await axios.get("/sanctum/csrf-cookie").then((response) => {
-		console.log(response);
-	});
+// (async () => {
+// 	await axios.get("/sanctum/csrf-cookie").then((response) => {
+// 		console.log(response);
+// 	});
 
-	await axios.get("/api/login").then((response) => {
-		console.log(response);
-	});
-})();
+// 	await axios.get("/api/login").then((response) => {
+// 		console.log(response);
+// 	});
+// })();

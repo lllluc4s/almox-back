@@ -53,32 +53,29 @@ class DatabaseSeeder extends Seeder
 		$role2->givePermissionTo('EquipmentsIndex');
 
 		$userAdmin = \App\Models\User::factory()->create([
-			'id' => 1,
+			// 'id' => 1,
 			'name' => 'Admin',
 			'email' => 'admin@admin.com',
-			'email_verified_at' => now(),
 			'password' => Hash::make('1234'),
-			'remember_token' => '',
+			// 'remember_token' => '',
 		]);
 		$userAdmin->assignRole($role1);
 
 		$user1 = \App\Models\User::factory()->create([
-			'id' => 2,
+			// 'id' => 2,
 			'name' => 'User1',
 			'email' => 'user1@user.com',
-			'email_verified_at' => now(),
 			'password' => Hash::make('1234'),
-			'remember_token' => '',
+			// 'remember_token' => '',
 		]);
 		$user1->assignRole($role2);
 
 		$user2 = \App\Models\User::factory()->create([
-			'id' => 3,
+			// 'id' => 3,
 			'name' => 'User2',
 			'email' => 'user2@user.com',
-			'email_verified_at' => now(),
 			'password' => Hash::make('1234'),
-			'remember_token' => '',
+			// 'remember_token' => '',
 		]);
 		$user2->assignRole($role2);
 
