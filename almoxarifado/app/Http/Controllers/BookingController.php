@@ -21,13 +21,17 @@ class BookingController extends Controller
 	}
 
 	/**
-	 * Leva para a rota de criação de reserva.
+	 * Mostra uma reserva específica.
 	 *
+	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create()
+	public function show($id)
 	{
-		return response()->json(['message' => 'Criar reserva']);
+		$booking = Booking::findOrFail($id);
+
+		echo 'Reserva específica:' . PHP_EOL;
+		return response()->json($booking);
 	}
 
 	/**
@@ -47,31 +51,6 @@ class BookingController extends Controller
 
 		echo 'Nova reserva cadastrada!' . PHP_EOL;
 		return response()->json($booking);
-	}
-
-	/**
-	 * Mostra uma reserva específica.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		$booking = Booking::findOrFail($id);
-
-		echo 'Reserva específica:' . PHP_EOL;
-		return response()->json($booking);
-	}
-
-	/**
-	 * Leva para a rota de edição de reserva.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		return response()->json(['message' => 'Editar reserva']);
 	}
 
 	/**
@@ -108,4 +87,25 @@ class BookingController extends Controller
 		echo 'Reserva deletada!' . PHP_EOL;
 		return response()->json($booking);
 	}
+
+	// /**
+	//  * Leva para a rota de criação de reserva.
+	//  *
+	//  * @return \Illuminate\Http\Response
+	//  */
+	// public function create()
+	// {
+	// 	return response()->json(['message' => 'Criar reserva']);
+	// }
+
+	// /**
+	//  * Leva para a rota de edição de reserva.
+	//  *
+	//  * @param  int  $id
+	//  * @return \Illuminate\Http\Response
+	//  */
+	// public function edit($id)
+	// {
+	// 	return response()->json(['message' => 'Editar reserva']);
+	// }
 }

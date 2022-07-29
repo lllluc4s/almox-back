@@ -35,7 +35,19 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/users', 'App\Http\Controllers\UserController@index')->middleware('auth:sanctum');
+Route::get('/users/{id}', 'App\Http\Controllers\UserController@show')->middleware('auth:sanctum');
+Route::post('/users', 'App\Http\Controllers\UserController@store')->middleware('auth:sanctum');
+Route::put('/users/{id}', 'App\Http\Controllers\UserController@update')->middleware('auth:sanctum');
+Route::delete('/users/{id}', 'App\Http\Controllers\UserController@destroy')->middleware('auth:sanctum');
 
 Route::get('/equipments', 'App\Http\Controllers\EquipmentController@index')->middleware('auth:sanctum');
+Route::get('/equipments/{id}', 'App\Http\Controllers\EquipmentController@show')->middleware('auth:sanctum');
+Route::post('/equipments', 'App\Http\Controllers\EquipmentController@store')->middleware('auth:sanctum');
+Route::put('/equipments/{id}', 'App\Http\Controllers\EquipmentController@update')->middleware('auth:sanctum');
+Route::delete('/equipments/{id}', 'App\Http\Controllers\EquipmentController@destroy')->middleware('auth:sanctum');
 
 Route::get('/bookings', 'App\Http\Controllers\BookingController@index',)->middleware('auth:sanctum');
+Route::get('/bookings/{id}', 'App\Http\Controllers\BookingController@show')->middleware('auth:sanctum');
+Route::post('/bookings', 'App\Http\Controllers\BookingController@store')->middleware('auth:sanctum');
+Route::put('/bookings/{id}', 'App\Http\Controllers\BookingController@update')->middleware('auth:sanctum');
+Route::delete('/bookings/{id}', 'App\Http\Controllers\BookingController@destroy')->middleware('auth:sanctum');

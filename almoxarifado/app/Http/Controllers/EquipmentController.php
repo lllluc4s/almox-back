@@ -21,13 +21,17 @@ class EquipmentController extends Controller
 	}
 
 	/**
-	 * Leva para a rota de criação de equipamento.
+	 * Mostra um equipamento específico.
 	 *
+	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create()
+	public function show($id)
 	{
-		return response()->json(['message' => 'Criar equipamento']);
+		$equipment = Equipment::findOrFail($id);
+
+		echo 'Equipamento encontrado!' . PHP_EOL;
+		return response()->json($equipment);
 	}
 
 	/**
@@ -47,31 +51,6 @@ class EquipmentController extends Controller
 
 		echo 'Novo equipamento cadastrado!' . PHP_EOL;
 		return response()->json($equipment);
-	}
-
-	/**
-	 * Mostra um equipamento específico.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		$equipment = Equipment::findOrFail($id);
-
-		echo 'Equipamento encontrado!' . PHP_EOL;
-		return response()->json($equipment);
-	}
-
-	/**
-	 * Leva para a página de edição de um equipamento.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		return response()->json(['message' => 'Editar equipamento']);
 	}
 
 	/**
@@ -108,4 +87,25 @@ class EquipmentController extends Controller
 		echo 'Equipamento deletado!' . PHP_EOL;
 		return response()->json(['message' => 'Equipamento deletado!']);
 	}
+
+	// /**
+	//  * Leva para a rota de criação de equipamento.
+	//  *
+	//  * @return \Illuminate\Http\Response
+	//  */
+	// public function create()
+	// {
+	// 	return response()->json(['message' => 'Criar equipamento']);
+	// }
+
+	// /**
+	//  * Leva para a página de edição de um equipamento.
+	//  *
+	//  * @param  int  $id
+	//  * @return \Illuminate\Http\Response
+	//  */
+	// public function edit($id)
+	// {
+	// 	return response()->json(['message' => 'Editar equipamento']);
+	// }
 }

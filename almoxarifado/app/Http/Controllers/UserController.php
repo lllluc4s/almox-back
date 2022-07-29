@@ -20,15 +20,19 @@ class UserController extends Controller
 		return response()->json($users);
 	}
 
-	// /**
-	//  * Leva para a rota de criação de usuário.
-	//  *
-	//  * @return \Illuminate\Http\Response
-	//  */
-	// public function create()
-	// {
-	// 	return response()->json(['message' => 'Criar usuário']);
-	// }
+	/**
+	 * Mostra um usuário específico.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show($id)
+	{
+		$user = User::findOrFail($id);
+
+		echo "Usuário encontrado com sucesso!" . PHP_EOL;
+		return response()->json($user);
+	}
 
 	/**
 	 * Salva um novo usuário.
@@ -47,31 +51,6 @@ class UserController extends Controller
 		echo "Usuário criado com sucesso!" . PHP_EOL;
 		return response()->json($user);
 	}
-
-	/**
-	 * Mostra um usuário específico.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		$user = User::findOrFail($id);
-
-		echo "Usuário encontrado com sucesso!" . PHP_EOL;
-		return response()->json($user);
-	}
-
-	// /**
-	//  * Leva para a rota de edição de usuário.
-	//  *
-	//  * @param  int  $id
-	//  * @return \Illuminate\Http\Response
-	//  */
-	// public function edit($id)
-	// {
-	// 	return response()->json(['message' => 'Editar usuário']);
-	// }
 
 	/**
 	 * Atualiza um usuário específico.
@@ -106,4 +85,25 @@ class UserController extends Controller
 		echo "Usuário removido com sucesso!" . PHP_EOL;
 		return response()->json($user);
 	}
+
+	// /**
+	//  * Leva para a rota de criação de usuário.
+	//  *
+	//  * @return \Illuminate\Http\Response
+	//  */
+	// public function create()
+	// {
+	// 	return response()->json(['message' => 'Criar usuário']);
+	// }
+
+	// /**
+	//  * Leva para a rota de edição de usuário.
+	//  *
+	//  * @param  int  $id
+	//  * @return \Illuminate\Http\Response
+	//  */
+	// public function edit($id)
+	// {
+	// 	return response()->json(['message' => 'Editar usuário']);
+	// }
 }
