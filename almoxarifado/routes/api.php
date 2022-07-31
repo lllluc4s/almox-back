@@ -58,6 +58,8 @@ use Illuminate\Support\Facades\Route;
 // 	abort(401);
 // });
 
+// Route::get('/login', 'App\Http\Controllers\LoginController@authenticate')->middleware('cors', 'auth:sanctum');
+
 Route::get('/login', 'App\Http\Controllers\LoginController@authenticate');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
