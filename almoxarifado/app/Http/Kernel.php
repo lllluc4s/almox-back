@@ -41,7 +41,7 @@ class Kernel extends HttpKernel
 		],
 
 		'api' => [
-			\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+			//\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
 			'throttle:api',
 			\Illuminate\Routing\Middleware\SubstituteBindings::class,
 			\Illuminate\Session\Middleware\StartSession::class,
@@ -56,6 +56,8 @@ class Kernel extends HttpKernel
 	 * @var array<string, class-string|string>
 	 */
 	protected $routeMiddleware = [
+		'auth:mid' => \App\Http\Middleware\AuthMiddleware::class,
+		'auth:jwt' => \App\Http\Middleware\JwtMiddleware::class,
 		'auth' => \App\Http\Middleware\Authenticate::class,
 		'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
 		'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
