@@ -45,9 +45,20 @@ class DatabaseSeeder extends Seeder
 		Permission::create(['name' => 'EquipmentsCreate']);
 		Permission::create(['name' => 'EquipmentsDelete']);
 
+		Permission::create(['name' => 'BookingsIndex']);
+		Permission::create(['name' => 'BookingsCreate']);
+		Permission::create(['name' => 'BookingsDelete']);
+
+		Permission::create(['name' =>
+		'UsersIndex']);
+		Permission::create(['name' =>
+		'UsersCreate']);
+		Permission::create(['name' =>
+		'UsersDelete']);
+
 		// create roles and assign existing permissions
 		$role1 = Role::create(['name' => 'admin']);
-		$role1->givePermissionTo('EquipmentsIndex', 'EquipmentsCreate', 'EquipmentsDelete');
+		$role1->givePermissionTo('EquipmentsIndex', 'EquipmentsCreate', 'EquipmentsDelete', 'BookingsIndex', 'BookingsCreate', 'BookingsDelete', 'UsersIndex', 'UsersCreate', 'UsersDelete');
 
 		$role2 = Role::create(['name' => 'user']);
 		$role2->givePermissionTo('EquipmentsIndex');

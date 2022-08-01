@@ -15,7 +15,7 @@ return [
     |
     */
 
-	'paths' => ['*', 'sanctum/csrf-cookie'],
+	'paths' => ['*'], // 'sanctum/csrf-cookie'
 
 	'allowed_methods' => ['*'],
 
@@ -30,5 +30,13 @@ return [
 	'max_age' => 0,
 
 	'supports_credentials' => true,
+
+	// 'supportsCredentials' => true,
+	// 'allowedOrigins' => ['*'],
+	// 'allowedOriginsPatterns' => [],
+	// 'allowedHeaders' => ['*'],
+	// 'allowedMethods' => ['*'],
+	// 'exposedHeaders' => [],
+	// 'maxAge' => 0,
 
 ];
