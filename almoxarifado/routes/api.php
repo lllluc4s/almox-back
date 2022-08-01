@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(["prefix" => "/auth"], function(){
+Route::group(["prefix" => "/auth"], function () {
 
 	Route::post('/login', 'App\Http\Controllers\LoginController@authenticate')->name('login');
 	Route::get('/me', 'App\Http\Controllers\LoginController@me');
 });
 
 Route::resource('/users', 'App\Http\Controllers\UserController')->middleware('jwt.auth');
-
-
+Route::resource('/equipments', 'App\Http\Controllers\EquipmentController')->middleware('jwt.auth');
+Route::resource('/bookings', 'App\Http\Controllers\BookingController')->middleware('jwt.auth');

@@ -16,7 +16,6 @@ class BookingController extends Controller
 	{
 		$bookings = Booking::all();
 
-		echo 'Lista de reservas:' . PHP_EOL;
 		return response()->json($bookings);
 	}
 
@@ -30,7 +29,6 @@ class BookingController extends Controller
 	{
 		$booking = Booking::findOrFail($id);
 
-		echo 'Reserva específica:' . PHP_EOL;
 		return response()->json($booking);
 	}
 
@@ -49,7 +47,6 @@ class BookingController extends Controller
 		$booking->transaction = $request->transaction; // Entrada ou Saída
 		$booking->save();
 
-		echo 'Nova reserva cadastrada!' . PHP_EOL;
 		return response()->json($booking);
 	}
 
@@ -69,7 +66,6 @@ class BookingController extends Controller
 		$booking->transaction = $request->transaction; // Entrada ou Saída
 		$booking->save();
 
-		echo 'Reserva atualizada!' . PHP_EOL;
 		return response()->json($booking);
 	}
 
@@ -84,7 +80,6 @@ class BookingController extends Controller
 		$booking = Booking::findOrFail($id);
 		$booking->delete();
 
-		echo 'Reserva deletada!' . PHP_EOL;
 		return response()->json($booking);
 	}
 

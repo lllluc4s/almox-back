@@ -16,7 +16,6 @@ class EquipmentController extends Controller
 	{
 		$equipments = Equipment::all();
 
-		echo 'Lista de equipamentos:' . PHP_EOL;
 		return response()->json($equipments);
 	}
 
@@ -30,7 +29,6 @@ class EquipmentController extends Controller
 	{
 		$equipment = Equipment::findOrFail($id);
 
-		echo 'Equipamento encontrado!' . PHP_EOL;
 		return response()->json($equipment);
 	}
 
@@ -49,7 +47,6 @@ class EquipmentController extends Controller
 		$equipment->status = $request->status;
 		$equipment->save();
 
-		echo 'Novo equipamento cadastrado!' . PHP_EOL;
 		return response()->json($equipment);
 	}
 
@@ -69,7 +66,6 @@ class EquipmentController extends Controller
 		$equipment->status = $request->status;
 		$equipment->save();
 
-		echo 'Equipamento atualizado!' . PHP_EOL;
 		return response()->json($equipment);
 	}
 
@@ -84,7 +80,6 @@ class EquipmentController extends Controller
 		$equipment = Equipment::findOrFail($id);
 		$equipment->delete();
 
-		echo 'Equipamento deletado!' . PHP_EOL;
 		return response()->json(['message' => 'Equipamento deletado!']);
 	}
 
