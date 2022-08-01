@@ -58,9 +58,12 @@ use Illuminate\Support\Facades\Route;
 // 	abort(401);
 // });
 
-// Route::get('/login', 'App\Http\Controllers\LoginController@authenticate')->middleware('cors', 'auth:sanctum');
+// Rota para csrf cookie (necessário para o Sanctum)
+Route::get('/sanctum/csrf-cookie', function (Request $request) {
+	return response()->json(['csrf' => csrf_token()]);
+});
 
-Route::get('/login', 'App\Http\Controllers\LoginController@authenticate');
+Route::post('/login', 'App\Http\Controllers\LoginController@authenticate')->name('login');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
 	Route::resources([

@@ -23,7 +23,7 @@ class CORS
 	public function handle($request, Closure $next)
 	{
 
-		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Origin: * "); // está enviando múltiplos valores para o cabeçalho 'Access-Control-Allow-Origin'
 
 		// ALLOW OPTIONS METHOD
 		$headers = [
