@@ -21,6 +21,14 @@ Route::group(["prefix" => "/auth"], function () {
 	Route::get('/me', 'App\Http\Controllers\LoginController@me');
 });
 
-Route::resource('/users', 'App\Http\Controllers\UserController')->middleware('jwt.auth');
-Route::resource('/equipments', 'App\Http\Controllers\EquipmentController')->middleware('jwt.auth');
-Route::resource('/bookings', 'App\Http\Controllers\BookingController')->middleware('jwt.auth');
+// Route::resource('/users', 'App\Http\Controllers\UserController')->middleware('jwt.auth');
+// Route::resource('/equipments', 'App\Http\Controllers\EquipmentController')->middleware('jwt.auth');
+// Route::resource('/bookings', 'App\Http\Controllers\BookingController')->middleware('jwt.auth');
+
+Route::group(['middleware' => 'jwt.auth'], function () {
+	Route::resources([
+		'users' => 'App\Http\Controllers\UserController',
+		'equipments' => 'App\Http\Controllers\EquipmentController',
+		'bookings' => 'App\Http\Controllers\BookingController',
+	]);
+});

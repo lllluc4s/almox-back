@@ -40,14 +40,23 @@ class EquipmentController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$equipment = new Equipment();
-		$equipment->type = $request->type;
-		$equipment->brand = $request->brand;
-		$equipment->patrimony = $request->patrimony;
-		$equipment->status = $request->status;
-		$equipment->save();
+		$input = $request->all();
+		$equipment = Equipment::create($input);
 
-		return response()->json($equipment);
+		if ($request->hasFile('image') && $request->file('image')->isValid()) {
+			$equipment->addMediaFromRequest('image')->toMediaCollection('images');
+		}
+		return redirect()->route('equipments.index');
+
+
+		// $equipment = new Equipment();
+		// $equipment->type = $request->type;
+		// $equipment->brand = $request->brand;
+		// $equipment->patrimony = $request->patrimony;
+		// $equipment->status = $request->status;
+		// $equipment->save();
+
+		// return response()->json($equipment);
 	}
 
 	/**
