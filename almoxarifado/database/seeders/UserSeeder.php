@@ -53,29 +53,12 @@ class UserSeeder extends Seeder
 
 		$userAdmin = \App\Models\User::factory()->create([
 			// 'id' => 1,
-			'name' => 'Admin',
+			'name' => 'Lucas',
 			'email' => 'admin@admin.com',
+			'type' => 'admin',
 			'password' => Hash::make('1234'),
 			// 'remember_token' => '',
 		]);
 		$userAdmin->assignRole($role1);
-
-		$user1 = \App\Models\User::factory()->create([
-			// 'id' => 2,
-			'name' => 'User1',
-			'email' => 'user1@user.com',
-			'password' => Hash::make('1234'),
-			// 'remember_token' => '',
-		]);
-		$user1->assignRole($role2);
-
-		$user2 = \App\Models\User::factory()->create([
-			// 'id' => 3,
-			'name' => 'User2',
-			'email' => 'user2@user.com',
-			'password' => Hash::make('1234'),
-			// 'remember_token' => '',
-		]);
-		$user2->assignRole($role2);
 	}
 }

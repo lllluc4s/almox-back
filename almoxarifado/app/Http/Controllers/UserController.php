@@ -17,7 +17,6 @@ class UserController extends Controller
 	{
 		$users = User::all();
 
-		echo "Lista de usuários:" . PHP_EOL;
 		return response()->json($users);
 	}
 
@@ -31,7 +30,6 @@ class UserController extends Controller
 	{
 		$user = User::findOrFail($id);
 
-		echo "Usuário encontrado com sucesso!" . PHP_EOL;
 		return response()->json($user);
 	}
 
@@ -46,10 +44,10 @@ class UserController extends Controller
 		$user = new User();
 		$user->name = $request->name;
 		$user->email = $request->email;
+		$user->type = $request->type;
 		$user->password = Hash::make($request->password);
 		$user->save();
 
-		echo "Usuário criado com sucesso!" . PHP_EOL;
 		return response()->json($user);
 	}
 
@@ -65,10 +63,10 @@ class UserController extends Controller
 		$user = User::findOrFail($id);
 		$user->name = $request->name;
 		$user->email = $request->email;
+		$user->type = $request->type;
 		$user->password = Hash::make($request->password);
 		$user->save();
 
-		echo "Usuário alterado com sucesso!" . PHP_EOL;
 		return response()->json($user);
 	}
 
@@ -83,7 +81,6 @@ class UserController extends Controller
 		$user = User::findOrFail($id);
 		$user->delete();
 
-		echo "Usuário removido com sucesso!" . PHP_EOL;
 		return response()->json($user);
 	}
 

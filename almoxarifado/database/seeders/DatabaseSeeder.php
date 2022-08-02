@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 
 		$this->call(UserSeeder::class);
 
-		Equipment::factory(2)->create();
-		Booking::factory(2)->create();
+		Equipment::factory(1)->create();
+		Booking::factory(1)->create();
 	}
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EquipmentController extends Controller
 {
@@ -40,23 +41,17 @@ class EquipmentController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$input = $request->all();
-		$equipment = Equipment::create($input);
+		$user = Auth::user();
 
-		if ($request->hasFile('image') && $request->file('image')->isValid()) {
-			$equipment->addMediaFromRequest('image')->toMediaCollection('images');
-		}
-		return redirect()->route('equipments.index');
+		$equipment = new Equipment();
+		$equipment->user_id = $user->id;
+		$equipment->type = $request->type;
+		$equipment->image = $request->image;
+		$equipment->patrimony = $request->patrimony;
+		$equipment->status = $request->status;
+		$equipment->save();
 
-
-		// $equipment = new Equipment();
-		// $equipment->type = $request->type;
-		// $equipment->brand = $request->brand;
-		// $equipment->patrimony = $request->patrimony;
-		// $equipment->status = $request->status;
-		// $equipment->save();
-
-		// return response()->json($equipment);
+		return response()->json($equipment);
 	}
 
 	/**
