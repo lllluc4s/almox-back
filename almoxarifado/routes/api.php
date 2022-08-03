@@ -30,6 +30,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 	// ROTAS DE REGRAS DE NEGÓCIO
 	Route::group(["prefix" => "/bookings"], function () {
 		Route::post('transaction/{id}', 'App\Http\Controllers\BookingController@transaction');
-		Route::get('/cancel/{id}', 'App\Http\Controllers\BookingController@cancelBooking');
+		Route::put('/cancel/{id}', 'App\Http\Controllers\BookingController@cancelBooking');
 	});
 });

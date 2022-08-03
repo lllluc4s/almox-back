@@ -18,8 +18,7 @@ class BookingController extends Controller
 			$equipment->status = 'Indisponível';
 			$equipment->save();
 		} else {
-			$equipment->status = 'Disponível';
-			$equipment->save();
+			return;
 		}
 	}
 
