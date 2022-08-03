@@ -8,13 +8,7 @@ namespace Database\Seeders;
 
 use App\Models\Booking;
 use App\Models\Equipment;
-use App\Models\User;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\PermissionRegistrar;
-use Faker\Factory as Faker;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,16 +19,9 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		// User::factory(2)->create();
-
-		// 	\App\Models\User::factory()->create([
-		// 		'name' => 'Admin',
-		// 		'email' => 'admin@admin.com',
-		// 	]);
-
 		$this->call(UserSeeder::class);
 
-		Equipment::factory(1)->create();
-		Booking::factory(1)->create();
+		Equipment::factory(4)->create();
+		Booking::factory(4)->create();
 	}
 }

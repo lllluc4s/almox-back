@@ -21,7 +21,6 @@ return new class extends Migration
 			$table->foreign('user_id')->references('id')->on('users');
 
 			$table->string('type');
-			$table->string('image');
 			$table->string('patrimony');
 			$table->string('status');
 			$table->timestamps();

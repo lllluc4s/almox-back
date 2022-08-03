@@ -22,7 +22,6 @@ class Equipment extends Model implements HasMedia
 	protected $fillable = [
 		'user_id',
 		'type',
-		'image',
 		'patrimony',
 		'status',
 	];

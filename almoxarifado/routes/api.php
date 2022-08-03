@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +26,3 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 		'bookings' => 'App\Http\Controllers\BookingController',
 	]);
 });
-
-// Route::resource('/users', 'App\Http\Controllers\UserController')->middleware('jwt.auth');
-// Route::resource('/equipments', 'App\Http\Controllers\EquipmentController')->middleware('jwt.auth');
-// Route::resource('/bookings', 'App\Http\Controllers\BookingController')->middleware('jwt.auth');

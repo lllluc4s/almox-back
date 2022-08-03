@@ -46,7 +46,6 @@ class EquipmentController extends Controller
 		$equipment = new Equipment();
 		$equipment->user_id = $user->id;
 		$equipment->type = $request->type;
-		$equipment->image = $request->image;
 		$equipment->patrimony = $request->patrimony;
 		$equipment->status = $request->status;
 		$equipment->save();
