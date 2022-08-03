@@ -36,7 +36,7 @@ class User extends Authenticatable implements JWTSubject
 		'password',
 		'remember_token',
 	];
-	//=======================================================================
+	//======================================================================
 
 	// RELACIONAMENTOS
 	public function equipment()
@@ -48,7 +48,7 @@ class User extends Authenticatable implements JWTSubject
 	{
 		return $this->hasMany(Booking::class);
 	}
-	//=======================================================================
+	//======================================================================
 
 	// MÉTODOS DE AUTENTICAÇÃO
 	/**

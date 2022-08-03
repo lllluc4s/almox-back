@@ -13,18 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// ROTAS DE AUTENTICAÇÃO
 Route::group(["prefix" => "/auth"], function () {
-
+	// ROTAS DE AUTENTICAÇÃO
 	Route::post('/login', 'App\Http\Controllers\LoginController@authenticate')->name('login');
 	Route::get('/me', 'App\Http\Controllers\LoginController@me');
 });
 
-// ROTAS DE RECURSOS
 Route::group(['middleware' => 'jwt.auth'], function () {
+	// ROTAS DE RECURSOS
 	Route::resources([
 		'users' => 'App\Http\Controllers\UserController',
 		'equipments' => 'App\Http\Controllers\EquipmentController',
 		'bookings' => 'App\Http\Controllers\BookingController',
 	]);
+
+	// ROTAS DE REGRAS DE NEGÓCIO
+	Route::group(["prefix" => "/bookings"], function () {
+		Route::post('transaction/{id}', 'App\Http\Controllers\BookingController@transaction');
+		Route::get('/cancel/{id}', 'App\Http\Controllers\BookingController@cancelBooking');
+	});
 });

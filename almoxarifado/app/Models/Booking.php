@@ -16,7 +16,7 @@ class Booking extends Model
 		'bookingDate',
 		'transaction',
 	];
-	//=======================================================================
+	//======================================================================
 
 	// RELACIONAMENTOS
 	public function user()
@@ -28,7 +28,7 @@ class Booking extends Model
 	{
 		return $this->belongsTo(Equipment::class);
 	}
-	//=======================================================================
+	//======================================================================
 
 	// MÉTODOS
 	// pegando a data da reserva
@@ -42,91 +42,40 @@ class Booking extends Model
 	{
 		$this->attributes['bookingDate'] = date('Y-m-d', strtotime($value));
 	}
-	//=======================================================================
+	//======================================================================
 
-	// SCOPES
-	public function scopeBookingDate($query, $bookingDate)
-	{
-		if ($bookingDate) {
-			$query->where('bookingDate', $bookingDate);
-		}
-	}
-
-	public function scopeTransaction($query, $transaction)
-	{
-		if ($transaction) {
-			$query->where('transaction', $transaction);
-		}
-	}
-	//=======================================================================
-
-	// REGRAS DE NEGÓCIO
-	// realizar transação apenas se o Equipment estiver com status 'Disponível'
-	public function transaction()
-	{
-		$equipment = Equipment::findOrFail($this->equipment_id);
-
-		if ($equipment->status == 'Disponível') {
-			$equipment->status = 'Indisponível';
-			$equipment->save();
-		} else {
-			$equipment->status = 'Disponível';
-			$equipment->save();
-		}
-	}
+	// REGRAS DE NEGÓCIO (possíveis de uso)
+	// equipamento não pode ter duas transações ao mesmo tempo
+	// public function checkTransaction()
+	// {
+	// 	if ($this->booking->count() > 0) {
+	// 		return false;
+	// 	} else {
+	// 		return true;
+	// 	}
+	// }
 
 	// verificar se o Equipment está com status 'Disponível'
-	public function checkStatus()
-	{
-		$equipment = Equipment::findOrFail($this->equipment_id);
+	// public function checkStatus()
+	// {
+	// 	$equipment = Equipment::findOrFail($this->equipment_id);
 
-		if ($equipment->status == 'Disponível') {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	// 	if ($equipment->status == 'Disponível') {
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// }
 
 	// realizar transação de entrada ou saída
-	public function transactionType()
-	{
-		if ($this->transaction == 'Entrada') {
-			$this->transaction = 'Saída';
-			$this->save();
-		} else {
-			$this->transaction = 'Entrada';
-			$this->save();
-		}
-	}
-
-	// verificar se a transação é de entrada ou saída
-	public function checkTransaction()
-	{
-		if ($this->transaction == 'Entrada') {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	// verificar se a data da reserva é igual a data atual
-	public function checkDate()
-	{
-		$today = date('Y-m-d');
-
-		if ($this->bookingDate == $today) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	// alterar status do Equipment para 'Disponível' quando reserva for cancelada
-	public function cancelBooking()
-	{
-		$equipment = Equipment::findOrFail($this->equipment_id);
-
-		$equipment->status = 'Disponível';
-		$equipment->save();
-	}
+	// public function transactionType()
+	// {
+	// 	if ($this->transaction == 'Entrada') {
+	// 		$this->transaction = 'Saída';
+	// 		$this->save();
+	// 	} else {
+	// 		$this->transaction = 'Entrada';
+	// 		$this->save();
+	// 	}
+	// }
 }

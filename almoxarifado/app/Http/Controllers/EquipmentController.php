@@ -8,6 +8,20 @@ use Illuminate\Support\Facades\Auth;
 
 class EquipmentController extends Controller
 {
+	// REGRAS DE NEGÓCIO
+	// equipamento não pode ter status 'Disponível' se estiver com uma reserva
+	// 	public function updateTransaction(array $attributes = [], array $options = [])
+	// 	{
+	// 		if ($this->status == 'Disponível' && $this->booking->count() > 0) {
+	// 			$this->status = 'Indisponível';
+	// 		} else {
+	// 			$this->status = 'Disponível';
+	// 		}
+
+	// 		return parent::update($attributes, $options);
+	//======================================================================
+
+	// CRUD
 	/**
 	 * Mostra todos os equipamentos.
 	 *
@@ -85,25 +99,4 @@ class EquipmentController extends Controller
 
 		return response()->json(['message' => 'Equipamento deletado!']);
 	}
-
-	// /**
-	//  * Leva para a rota de criação de equipamento.
-	//  *
-	//  * @return \Illuminate\Http\Response
-	//  */
-	// public function create()
-	// {
-	// 	return response()->json(['message' => 'Criar equipamento']);
-	// }
-
-	// /**
-	//  * Leva para a página de edição de um equipamento.
-	//  *
-	//  * @param  int  $id
-	//  * @return \Illuminate\Http\Response
-	//  */
-	// public function edit($id)
-	// {
-	// 	return response()->json(['message' => 'Editar equipamento']);
-	// }
 }

@@ -3,10 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Equipment;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+	// REGRAS DE NEGÓCIO
+	// realizar transação apenas se o Equipment estiver com status 'Disponível'
+	public function transaction(Request $request)
+	{
+		$equipment = Equipment::findOrFail($request->id);
+
+		if ($equipment->status == 'Disponível') {
+			$equipment->status = 'Indisponível';
+			$equipment->save();
+		} else {
+			$equipment->status = 'Disponível';
+			$equipment->save();
+		}
+	}
+
+	// alterar status do Equipment para 'Disponível' quando reserva for cancelada
+	public function cancelBooking(Request $request)
+	{
+		$equipment = Equipment::findOrFail($request->id);
+
+		$equipment->status = 'Disponível';
+		$equipment->save();
+	}
+	//======================================================================
+
+	// CRUD
 	/**
 	 * Mostra todas as reservas.
 	 *
@@ -82,25 +109,4 @@ class BookingController extends Controller
 
 		return response()->json($booking);
 	}
-
-	// /**
-	//  * Leva para a rota de criação de reserva.
-	//  *
-	//  * @return \Illuminate\Http\Response
-	//  */
-	// public function create()
-	// {
-	// 	return response()->json(['message' => 'Criar reserva']);
-	// }
-
-	// /**
-	//  * Leva para a rota de edição de reserva.
-	//  *
-	//  * @param  int  $id
-	//  * @return \Illuminate\Http\Response
-	//  */
-	// public function edit($id)
-	// {
-	// 	return response()->json(['message' => 'Editar reserva']);
-	// }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+	// CRUD
 	/**
 	 * Mostra todos os usuários.
 	 *
@@ -83,25 +84,4 @@ class UserController extends Controller
 
 		return response()->json($user);
 	}
-
-	// /**
-	//  * Leva para a rota de criação de usuário.
-	//  *
-	//  * @return \Illuminate\Http\Response
-	//  */
-	// public function create()
-	// {
-	// 	return response()->json(['message' => 'Criar usuário']);
-	// }
-
-	// /**
-	//  * Leva para a rota de edição de usuário.
-	//  *
-	//  * @param  int  $id
-	//  * @return \Illuminate\Http\Response
-	//  */
-	// public function edit($id)
-	// {
-	// 	return response()->json(['message' => 'Editar usuário']);
-	// }
 }
