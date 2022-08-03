@@ -12,11 +12,19 @@ class BookingController extends Controller
 	// realizar transação apenas se o Equipment estiver com status 'Disponível'
 	public function transaction(Request $request)
 	{
+		$user = auth()->user();
 		$equipment = Equipment::findOrFail($request->id);
 
 		if ($equipment->status == 'Disponível') {
 			$equipment->status = 'Indisponível';
 			$equipment->save();
+
+			$booking = new Booking();
+			$booking->user_id = $user->id;
+			$booking->equipment_id = $request->id;
+			$booking->bookingDate = now();
+			$booking->transaction = 'Entrada';
+			$booking->save();
 		} else {
 			return;
 		}
@@ -29,6 +37,13 @@ class BookingController extends Controller
 
 		$equipment->status = 'Disponível';
 		$equipment->save();
+
+		$booking = new Booking();
+		$booking->user_id = $request->user_id;
+		$booking->equipment_id = $request->id;
+		$booking->bookingDate = $request->bookingDate;
+		$booking->transaction = 'Saída';
+		$booking->save();
 	}
 	//======================================================================
 
