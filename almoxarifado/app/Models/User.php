@@ -14,18 +14,7 @@ class User extends Authenticatable implements JWTSubject
 {
 	use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
-	// RELACIONAMENTOS
-	public function equipment()
-	{
-		return $this->hasMany(Equipment::class);
-	}
-
-	public function booking()
-	{
-		return $this->hasMany(Booking::class);
-	}
-	//=======================================================================
-
+	// ATRIBUTOS
 	/**
 	 * The attributes that are mass assignable.
 	 *
@@ -47,7 +36,21 @@ class User extends Authenticatable implements JWTSubject
 		'password',
 		'remember_token',
 	];
+	//=======================================================================
 
+	// RELACIONAMENTOS
+	public function equipment()
+	{
+		return $this->hasMany(Equipment::class);
+	}
+
+	public function booking()
+	{
+		return $this->hasMany(Booking::class);
+	}
+	//=======================================================================
+
+	// MÉTODOS DE AUTENTICAÇÃO
 	/**
 	 * Get the identifier that will be stored in the subject claim of the JWT.
 	 *
@@ -68,3 +71,4 @@ class User extends Authenticatable implements JWTSubject
 		return [];
 	}
 }
+//=======================================================================

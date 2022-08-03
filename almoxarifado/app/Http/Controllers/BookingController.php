@@ -43,7 +43,7 @@ class BookingController extends Controller
 		$booking = new Booking();
 		$booking->user_id = $request->user_id;
 		$booking->equipment_id = $request->equipment_id;
-		$booking->date = $request->date;
+		$booking->bookingDate = $request->bookingDate;
 		$booking->transaction = $request->transaction; // Entrada ou Saída
 		$booking->save();
 

@@ -19,9 +19,10 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$this->call(UserSeeder::class);
-
-		Equipment::factory(4)->create();
-		Booking::factory(4)->create();
+		$this->call([
+			UserSeeder::class,
+			EquipmentSeeder::class,
+			// BookingSeeder::class,
+		]);
 	}
 }

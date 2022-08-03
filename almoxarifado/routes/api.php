@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ROTAS DE AUTENTICAÇÃO
 Route::group(["prefix" => "/auth"], function () {
 
 	Route::post('/login', 'App\Http\Controllers\LoginController@authenticate')->name('login');
 	Route::get('/me', 'App\Http\Controllers\LoginController@me');
 });
 
+// ROTAS DE RECURSOS
 Route::group(['middleware' => 'jwt.auth'], function () {
 	Route::resources([
 		'users' => 'App\Http\Controllers\UserController',

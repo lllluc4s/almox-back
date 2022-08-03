@@ -24,7 +24,7 @@ class EquipmentFactory extends Factory
 
 		return [
 			'user_id' => $this->faker->randomElement($user),
-			'type' => $this->faker->randomElement(['PC Desktop', 'Notebook', 'Monitor', 'Mouse', 'Teclado', 'Headset', 'Cadeira', 'Impressora', 'Cabo', 'Outros']),
+			'type' => $this->faker->randomElement(['PC Desktop', 'Notebook', 'Monitor', 'Mouse', 'Teclado', 'Headset', 'Cadeira', 'Impressora', 'Cabo', 'Fonte']),
 			'patrimony' => $this->faker->randomElement(['Braip', 'Kapsula', 'KPG']),
 			'status' => $this->faker->randomElement(['Disponível', 'Indisponível']),
 		];

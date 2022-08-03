@@ -24,7 +24,7 @@ class BookingFactory extends Factory
 		return [
 			'user_id' => $this->faker->randomElement($user),
 			'equipment_id' => $this->faker->randomElement($equipment),
-			'date' => $this->faker->dateTimeBetween('now', '+1 years'),
+			'bookingDate' => $this->faker->dateTimeBetween('now', '+1 years'),
 			'transaction' => $this->faker->randomElement(['Entrada', 'Saída']),
 		];
 	}

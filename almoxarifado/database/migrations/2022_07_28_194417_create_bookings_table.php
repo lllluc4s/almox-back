@@ -23,7 +23,7 @@ return new class extends Migration
 			$table->unsignedBigInteger('equipment_id');
 			$table->foreign('equipment_id')->references('id')->on('equipment');
 
-			$table->date('date');
+			$table->date('bookingDate');
 			$table->string('transaction');
 			$table->timestamps();
 		});
