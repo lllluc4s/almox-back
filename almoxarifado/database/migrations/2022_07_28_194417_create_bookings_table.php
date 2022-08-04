@@ -19,9 +19,13 @@ return new class extends Migration
 
 			$table->unsignedBigInteger('user_id');
 			$table->foreign('user_id')->references('id')->on('users');
+			$table->string('user_name');
+			$table->foreign('user_name')->references('name')->on('users');
 
 			$table->unsignedBigInteger('equipment_id');
 			$table->foreign('equipment_id')->references('id')->on('equipment');
+			$table->string('equipment_type');
+			$table->foreign('equipment_type')->references('type')->on('equipment');
 
 			$table->date('bookingDate');
 			$table->string('transaction');

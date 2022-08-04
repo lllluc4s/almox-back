@@ -18,6 +18,8 @@ return new class extends Migration
 			$table->index(['id' => 'id']);
 
 			$table->string('name');
+			$table->index(['name' => 'name']);
+
 			$table->string('email')->unique();
 			$table->string('type');
 			$table->string('password');

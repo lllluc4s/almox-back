@@ -17,13 +17,17 @@ class BookingController extends Controller
 
 		if ($equipment->status == 'Disponível') {
 			$equipment->status = 'Indisponível';
-			$equipment->save();
 
 			$booking = new Booking();
 			$booking->user_id = $user->id;
-			$booking->equipment_id = $request->id;
+			$booking->user_name = $user->name;
+			$booking->equipment_id = $equipment->id;
+			$booking->equipment_type = $equipment->type;
 			$booking->bookingDate = now();
-			$booking->transaction = 'Entrada';
+			$booking->transaction = 'Reserva';
+
+			echo $equipment->type;
+			$equipment->save();
 			$booking->save();
 		} else {
 			return;
@@ -33,17 +37,26 @@ class BookingController extends Controller
 	// alterar status do Equipment para 'Disponível' quando reserva for cancelada
 	public function cancelBooking(Request $request)
 	{
+		$user = auth()->user();
 		$equipment = Equipment::findOrFail($request->id);
 
-		$equipment->status = 'Disponível';
-		$equipment->save();
+		if ($equipment->status == 'Indisponível') {
+			$equipment->status = 'Disponível';
 
-		$booking = new Booking();
-		$booking->user_id = $request->user_id;
-		$booking->equipment_id = $request->id;
-		$booking->bookingDate = $request->bookingDate;
-		$booking->transaction = 'Saída';
-		$booking->save();
+			$booking = new Booking();
+			$booking->user_id = $user->id;
+			$booking->user_name = $user->name;
+			$booking->equipment_id = $equipment->id;
+			$booking->equipment_type = $equipment->type;
+			$booking->bookingDate = now();
+			$booking->transaction = 'Devolução';
+
+			echo $equipment->type;
+			$equipment->save();
+			$booking->save();
+		} else {
+			return;
+		}
 	}
 	//======================================================================
 

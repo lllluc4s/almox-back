@@ -12,7 +12,9 @@ class Booking extends Model
 	// ATRIBUTOS
 	protected $fillable = [
 		'user_id',
+		'user_name',
 		'equipment_id',
+		'equipment_type',
 		'bookingDate',
 		'transaction',
 	];
