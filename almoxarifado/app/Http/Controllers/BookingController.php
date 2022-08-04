@@ -13,8 +13,8 @@ class BookingController extends Controller
 	// realizar transação apenas se o Equipment estiver com status 'Disponível'
 	public function transaction(Request $request)
 	{
-		$user = User::find($request->id);
-		$equipment = Equipment::findOrFail($request->id);
+		$user = User::find($request->user_id);
+		$equipment = Equipment::find($request->equipment_id);
 
 		if ($equipment->status == 'Disponível') {
 			$equipment->status = 'Indisponível';
@@ -38,8 +38,7 @@ class BookingController extends Controller
 	public function cancelBooking(Request $request)
 	{
 		$user = User::find($request->id);
-
-		$equipment = Equipment::findOrFail($request->id);
+		$equipment = Equipment::find($request->id);
 
 		if ($equipment->status == 'Indisponível') {
 			$equipment->status = 'Disponível';
@@ -66,10 +65,15 @@ class BookingController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		$bookings = Booking::all();
-
+		$bookings = Booking::where('user_id', 'like', '%' . $request->filtro . '%')
+			->orWhere('user_name', 'like', '%' . $request->filtro . '%')
+			->orWhere('equipment_id', 'like', '%' . $request->filtro . '%')
+			->orWhere('equipment_type', 'like', '%' . $request->filtro . '%')
+			->orWhere('bookingDate', 'like', '%' . $request->filtro . '%')
+			->orWhere('transaction', 'like', '%' . $request->filtro . '%')
+			->get();
 		return response()->json($bookings);
 	}
 
