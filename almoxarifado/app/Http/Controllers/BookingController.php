@@ -37,8 +37,8 @@ class BookingController extends Controller
 	// alterar status do Equipment para 'Disponível' quando reserva for cancelada
 	public function cancelBooking(Request $request)
 	{
-		$user = User::find($request->id);
-		$equipment = Equipment::find($request->id);
+		$user = User::find($request->user_id);
+		$equipment = Equipment::find($request->equipment_id);
 
 		if ($equipment->status == 'Indisponível') {
 			$equipment->status = 'Disponível';
@@ -56,6 +56,7 @@ class BookingController extends Controller
 		} else {
 			return;
 		}
+		return response()->json(['message' => 'Reserva cancelada com sucesso!']);
 	}
 	//======================================================================
 

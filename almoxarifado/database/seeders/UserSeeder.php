@@ -60,5 +60,25 @@ class UserSeeder extends Seeder
 			// 'remember_token' => '',
 		]);
 		$userAdmin->assignRole($role1);
+
+		$user1 = \App\Models\User::factory()->create([
+			// 'id' => 2,
+			'name' => 'Darth Maul',
+			'email' => 'darth@maul.com',
+			'type' => 'user',
+			'password' => Hash::make('1234'),
+			// 'remember_token' => '',
+		]);
+		$user1->assignRole($role2);
+
+		$user2 = \App\Models\User::factory()->create([
+			// 'id' => 3,
+			'name' => 'Kylo Ren',
+			'email' => 'kylo@ren.com',
+			'type' => 'user',
+			'password' => Hash::make('1234'),
+			// 'remember_token' => '',
+		]);
+		$user2->assignRole($role2);
 	}
 }
