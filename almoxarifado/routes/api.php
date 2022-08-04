@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('users', UserController::class);
+
 Route::group(["prefix" => "/auth"], function () {
 	// ROTAS DE AUTENTICAÇÃO
 	Route::post('/login', 'App\Http\Controllers\LoginController@authenticate')->name('login');
@@ -22,7 +25,6 @@ Route::group(["prefix" => "/auth"], function () {
 Route::group(['middleware' => 'jwt.auth'], function () {
 	// ROTAS DE RECURSOS
 	Route::resources([
-		'users' => 'App\Http\Controllers\UserController',
 		'equipments' => 'App\Http\Controllers\EquipmentController',
 		'bookings' => 'App\Http\Controllers\BookingController',
 	]);

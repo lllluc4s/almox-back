@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Equipment;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -12,7 +13,7 @@ class BookingController extends Controller
 	// realizar transação apenas se o Equipment estiver com status 'Disponível'
 	public function transaction(Request $request)
 	{
-		$user = auth()->user();
+		$user = User::find($request->id);
 		$equipment = Equipment::findOrFail($request->id);
 
 		if ($equipment->status == 'Disponível') {
@@ -26,7 +27,6 @@ class BookingController extends Controller
 			$booking->bookingDate = now();
 			$booking->transaction = 'Reserva';
 
-			echo $equipment->type;
 			$equipment->save();
 			$booking->save();
 		} else {
@@ -37,7 +37,8 @@ class BookingController extends Controller
 	// alterar status do Equipment para 'Disponível' quando reserva for cancelada
 	public function cancelBooking(Request $request)
 	{
-		$user = auth()->user();
+		$user = User::find($request->id);
+
 		$equipment = Equipment::findOrFail($request->id);
 
 		if ($equipment->status == 'Indisponível') {
@@ -51,7 +52,6 @@ class BookingController extends Controller
 			$booking->bookingDate = now();
 			$booking->transaction = 'Devolução';
 
-			echo $equipment->type;
 			$equipment->save();
 			$booking->save();
 		} else {
