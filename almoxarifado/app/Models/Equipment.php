@@ -21,7 +21,6 @@ class Equipment extends Model implements HasMedia
 	protected $primaryKey = 'id';
 
 	protected $fillable = [
-		'user_id',
 		'type',
 		'patrimony',
 		'status',

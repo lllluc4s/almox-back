@@ -63,8 +63,8 @@ class UserSeeder extends Seeder
 
 		$user1 = \App\Models\User::factory()->create([
 			// 'id' => 2,
-			'name' => 'Darth Maul',
-			'email' => 'darth@maul.com',
+			'name' => 'Noah',
+			'email' => 'noah@user.com',
 			'type' => 'user',
 			'password' => Hash::make('1234'),
 			// 'remember_token' => '',
@@ -73,8 +73,8 @@ class UserSeeder extends Seeder
 
 		$user2 = \App\Models\User::factory()->create([
 			// 'id' => 3,
-			'name' => 'Kylo Ren',
-			'email' => 'kylo@ren.com',
+			'name' => 'Cléo',
+			'email' => 'cleo@user.com',
 			'type' => 'user',
 			'password' => Hash::make('1234'),
 			// 'remember_token' => '',

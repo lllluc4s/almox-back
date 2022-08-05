@@ -55,10 +55,7 @@ class EquipmentController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$user = Auth::user();
-
 		$equipment = new Equipment();
-		$equipment->user_id = $user->id;
 		$equipment->type = $request->type;
 		$equipment->patrimony = $request->patrimony;
 		$equipment->status = $request->status;
@@ -78,7 +75,6 @@ class EquipmentController extends Controller
 	{
 		$equipment = Equipment::findOrFail($id);
 		$equipment->type = $request->type;
-		$equipment->brand = $request->brand;
 		$equipment->patrimony = $request->patrimony;
 		$equipment->status = $request->status;
 		$equipment->save();

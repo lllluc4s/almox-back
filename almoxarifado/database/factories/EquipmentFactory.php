@@ -20,10 +20,9 @@ class EquipmentFactory extends Factory
 	 */
 	public function definition()
 	{
-		$user = User::all()->pluck('id')->toArray();
+		// $user = User::all()->pluck('id')->toArray();
 
 		return [
-			'user_id' => $this->faker->randomElement($user),
 			'type' => $this->faker->randomElement(['PC Desktop', 'Notebook', 'Monitor', 'Mouse', 'Teclado', 'Headset', 'Cadeira', 'Impressora', 'Cabo', 'Fonte']),
 			'patrimony' => $this->faker->randomElement(['Braip', 'Kapsula', 'KPG']),
 			'status' => $this->faker->randomElement(['Disponível', 'Indisponível']),

@@ -17,9 +17,6 @@ return new class extends Migration
 			$table->id();
 			$table->index(['id' => 'id']);
 
-			$table->unsignedBigInteger('user_id');
-			$table->foreign('user_id')->references('id')->on('users');
-
 			$table->string('type');
 			$table->index(['type' => 'type']);
 
