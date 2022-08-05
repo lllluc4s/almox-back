@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ROTA SIMPLES DE USER
 Route::resource('users', UserController::class);
 
 Route::group(["prefix" => "/auth"], function () {
@@ -32,6 +33,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 	// ROTAS DE REGRAS DE NEGÓCIO
 	Route::group(["prefix" => "/bookings"], function () {
 		Route::post('transaction/', 'App\Http\Controllers\BookingController@transaction');
-		Route::post('/cancel/', 'App\Http\Controllers\BookingController@cancelBooking');
+		Route::post('cancel/', 'App\Http\Controllers\BookingController@cancelBooking');
 	});
 });
