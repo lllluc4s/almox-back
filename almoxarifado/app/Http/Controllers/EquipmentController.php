@@ -8,19 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class EquipmentController extends Controller
 {
-	// REGRAS DE NEGÓCIO
-	// equipamento não pode ter status 'Disponível' se estiver com uma reserva
-	// 	public function updateTransaction(array $attributes = [], array $options = [])
-	// 	{
-	// 		if ($this->status == 'Disponível' && $this->booking->count() > 0) {
-	// 			$this->status = 'Indisponível';
-	// 		} else {
-	// 			$this->status = 'Disponível';
-	// 		}
-
-	// 		return parent::update($attributes, $options);
-	//======================================================================
-
 	// CRUD
 	/**
 	 * Mostra todos os equipamentos.
