@@ -37,26 +37,4 @@ class Equipment extends Model implements HasMedia
 	{
 		return $this->hasMany(Booking::class);
 	}
-	//======================================================================
-
-	// MÉTODOS
-	// pegando o status do equipamento
-	public function getStatusAttribute($value)
-	{
-		if ($value == 1) {
-			return 'Disponível';
-		} else {
-			return 'Indisponível';
-		}
-	}
-
-	// setando o status do equipamento
-	public function setStatusAttribute($value)
-	{
-		if ($value == 'Disponível') {
-			$this->attributes['status'] = 1;
-		} else {
-			$this->attributes['status'] = 0;
-		}
-	}
 }
