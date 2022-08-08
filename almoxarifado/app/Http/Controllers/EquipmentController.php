@@ -9,15 +9,29 @@ use Illuminate\Support\Facades\Auth;
 class EquipmentController extends Controller
 {
 	// CRUD
+	// /**
+	//  * Mostra todos os equipamentos.
+	//  *
+	//  * @return \Illuminate\Http\Response
+	//  */
+	// public function index()
+	// {
+	// 	$equipments = Equipment::all();
+
+	// 	return response()->json($equipments);
+	// }
+
 	/**
-	 * Mostra todos os equipamentos.
+	 * Mostra todas as reservas.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		$equipments = Equipment::all();
-
+		$equipments = Equipment::where('type', 'like', '%' . $request->filtro . '%')
+			->orWhere('patrimony', 'like', '%' . $request->filtro . '%')
+			->orWhere('status', 'like', '%' . $request->filtro . '%')
+			->get();
 		return response()->json($equipments);
 	}
 
