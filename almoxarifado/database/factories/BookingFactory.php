@@ -28,6 +28,7 @@ class BookingFactory extends Factory
 			'user_name' => $this->faker->randomElement($userName),
 			'equipment_id' => $this->faker->randomElement($equipment),
 			'equipment_type' => $this->faker->randomElement($equipmentType),
+			'patrimony' => $this->faker->randomElement('Braip', 'Kapsula', 'KPG'),
 			'quantity' => $this->faker->numberBetween(1, 10),
 			'bookingDate' => $this->faker->dateTimeBetween('now', '+1 years'),
 			'transaction' => $this->faker->randomElement(['Reserva', 'Devolução']),

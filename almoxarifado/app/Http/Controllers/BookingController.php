@@ -24,6 +24,8 @@ class BookingController extends Controller
 			$booking->user_name = $user->name;
 			$booking->equipment_id = $equipment->id;
 			$booking->equipment_type = $equipment->type;
+			$booking->patrimony = $equipment->patrimony;
+			$booking->quantity = $request->quantity;
 			$booking->bookingDate = now();
 			$booking->transaction = 'Reserva';
 
@@ -49,6 +51,8 @@ class BookingController extends Controller
 			$booking->user_name = $user->name;
 			$booking->equipment_id = $equipment->id;
 			$booking->equipment_type = $equipment->type;
+			$booking->patrimony = $equipment->patrimony;
+			$booking->quantity = $equipmentBooking->quantity;
 			$booking->bookingDate = now();
 			$booking->transaction = 'Devolução';
 
@@ -73,6 +77,7 @@ class BookingController extends Controller
 			->orWhere('user_name', 'like', '%' . $request->filtro . '%')
 			->orWhere('equipment_id', 'like', '%' . $request->filtro . '%')
 			->orWhere('equipment_type', 'like', '%' . $request->filtro . '%')
+			->orWhere('patrimony', 'like', '%' . $request->filtro . '%')
 			->orWhere('quantity', 'like', '%' . $request->filtro . '%')
 			->orWhere('bookingDate', 'like', '%' . $request->filtro . '%')
 			->orWhere('transaction', 'like', '%' . $request->filtro . '%')
@@ -104,6 +109,7 @@ class BookingController extends Controller
 		$booking = new Booking();
 		$booking->user_id = $request->user_id;
 		$booking->equipment_id = $request->equipment_id;
+		$booking->patrimony = $request->patrimony;
 		$booking->quantity = $request->quantity;
 		$booking->bookingDate = $request->bookingDate;
 		$booking->transaction = $request->transaction; // Entrada ou Saída
@@ -124,6 +130,7 @@ class BookingController extends Controller
 		$booking = Booking::findOrFail($id);
 		$booking->user_id = $request->user_id;
 		$booking->equipment_id = $request->equipment_id;
+		$booking->patrimony = $request->patrimony;
 		$booking->quantity = $request->quantity;
 		$booking->date = $request->date;
 		$booking->transaction = $request->transaction; // Entrada ou Saída

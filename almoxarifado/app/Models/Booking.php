@@ -15,6 +15,7 @@ class Booking extends Model
 		'user_name',
 		'equipment_id',
 		'equipment_type',
+		'patrimony',
 		'quantity',
 		'bookingDate',
 		'transaction',
