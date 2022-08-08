@@ -27,6 +27,7 @@ return new class extends Migration
 			$table->string('equipment_type');
 			$table->foreign('equipment_type')->references('type')->on('equipment');
 
+			$table->integer('quantity');
 			$table->date('bookingDate');
 			$table->string('transaction');
 			$table->timestamps();

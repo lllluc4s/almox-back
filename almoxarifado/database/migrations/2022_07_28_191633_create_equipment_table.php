@@ -20,7 +20,7 @@ return new class extends Migration
 			$table->string('type');
 			$table->index(['type' => 'type']);
 
-			$table->string('patrimony');
+			$table->integer('quantity');
 			$table->string('status');
 			$table->timestamps();
 		});

@@ -17,70 +17,70 @@ class EquipmentSeeder extends Seeder
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 1,
 			'type' => 'PC Desktop',
-			'patrimony' => 'KPG',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 2,
 			'type' => 'Notebook',
-			'patrimony' => 'Braip',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 3,
 			'type' => 'Monitor',
-			'patrimony' => 'KPG',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 4,
 			'type' => 'Mouse',
-			'patrimony' => 'KPG',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 5,
 			'type' => 'Teclado',
-			'patrimony' => 'KPG',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 6,
 			'type' => 'Headset',
-			'patrimony' => 'Braip',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 7,
 			'type' => 'Cadeira',
-			'patrimony' => 'Braip',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 8,
 			'type' => 'Impressora',
-			'patrimony' => 'Kapsula',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 9,
 			'type' => 'Cabo',
-			'patrimony' => 'Kapsula',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 
 		\App\Models\Equipment::factory()->create([
 			// 'id' => 10,
 			'type' => 'Fonte',
-			'patrimony' => 'Braip',
+			'quantity' => 10,
 			'status' => 'Disponível',
 		]);
 	}

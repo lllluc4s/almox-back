@@ -29,7 +29,7 @@ class EquipmentController extends Controller
 	public function index(Request $request)
 	{
 		$equipments = Equipment::where('type', 'like', '%' . $request->filtro . '%')
-			->orWhere('patrimony', 'like', '%' . $request->filtro . '%')
+			->orWhere('quantity', 'like', '%' . $request->filtro . '%')
 			->orWhere('status', 'like', '%' . $request->filtro . '%')
 			->get();
 		return response()->json($equipments);
@@ -58,7 +58,7 @@ class EquipmentController extends Controller
 	{
 		$equipment = new Equipment();
 		$equipment->type = $request->type;
-		$equipment->patrimony = $request->patrimony;
+		$equipment->quantity = $request->quantity;
 		$equipment->status = $request->status;
 		$equipment->save();
 
@@ -76,7 +76,7 @@ class EquipmentController extends Controller
 	{
 		$equipment = Equipment::findOrFail($id);
 		$equipment->type = $request->type;
-		$equipment->patrimony = $request->patrimony;
+		$equipment->quantity = $request->quantity;
 		$equipment->status = $request->status;
 		$equipment->save();
 

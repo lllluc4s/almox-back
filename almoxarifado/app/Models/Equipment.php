@@ -22,7 +22,7 @@ class Equipment extends Model implements HasMedia
 
 	protected $fillable = [
 		'type',
-		'patrimony',
+		'quantity',
 		'status',
 	];
 	//======================================================================
