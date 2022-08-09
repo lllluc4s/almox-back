@@ -29,7 +29,6 @@ class EquipmentController extends Controller
 	public function index(Request $request)
 	{
 		$equipments = Equipment::where('type', 'like', '%' . $request->filtro . '%')
-			->orWhere('quantity', 'like', '%' . $request->filtro . '%')
 			->orWhere('status', 'like', '%' . $request->filtro . '%')
 			->get();
 		return response()->json($equipments);
