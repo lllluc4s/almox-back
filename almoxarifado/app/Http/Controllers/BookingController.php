@@ -39,27 +39,25 @@ class BookingController extends Controller
 	// alterar status do Equipment para 'Disponível' quando reserva for cancelada
 	public function cancelBooking(Request $request)
 	{
-		$booking = Booking::where('booking_id', $request->booking_id)->latest()->first();
-		$user = User::find($booking->user_id);
-		$equipment = Equipment::find($request->equipment_id);
+		$equipmentBooking = Booking::find($request->booking_id)->latest()->first();
+		$user = User::find($equipmentBooking->user_id);
+		$equipment = Equipment::find($equipmentBooking->equipment_id);
 
-		if ($equipment->status == 'Indisponível') {
-			$equipment->status = 'Disponível';
-
+		if ($equipmentBooking->transaction == 'Reserva') {
 			$booking = new Booking();
-			$booking->user_id = $booking->user_id;
+			$booking->user_id = $equipmentBooking->user_id;
 			$booking->user_name = $user->name;
 			$booking->equipment_id = $equipment->id;
 			$booking->equipment_type = $equipment->type;
-			$booking->patrimony = $equipment->patrimony;
-			$booking->quantity = $booking->quantity;
+			$booking->patrimony = $equipmentBooking->patrimony;
+			$booking->quantity = $equipmentBooking->quantity;
 			$booking->bookingDate = now();
 			$booking->transaction = 'Devolução';
 
-			$equipment->save();
 			$booking->save();
+			$equipment->save();
 		} else {
-			return;
+		return;
 		}
 		return response()->json(['message' => 'Reserva cancelada com sucesso!']);
 	}
