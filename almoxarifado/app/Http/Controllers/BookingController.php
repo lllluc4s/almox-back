@@ -17,14 +17,12 @@ class BookingController extends Controller
 		$equipment = Equipment::find($request->equipment_id);
 
 		if ($equipment->status == 'Disponível') {
-			$equipment->status = 'Indisponível';
-
 			$booking = new Booking();
 			$booking->user_id = $user->id;
 			$booking->user_name = $user->name;
 			$booking->equipment_id = $equipment->id;
 			$booking->equipment_type = $equipment->type;
-			$booking->patrimony = $equipment->patrimony;
+			$booking->patrimony = $request->patrimony;
 			$booking->quantity = $request->quantity;
 			$booking->bookingDate = now();
 			$booking->transaction = 'Reserva';
@@ -57,7 +55,7 @@ class BookingController extends Controller
 			$booking->save();
 			$equipment->save();
 		} else {
-		return;
+			return;
 		}
 		return response()->json(['message' => 'Reserva cancelada com sucesso!']);
 	}
