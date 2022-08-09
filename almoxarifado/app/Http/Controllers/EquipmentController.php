@@ -58,7 +58,6 @@ class EquipmentController extends Controller
 	{
 		$equipment = new Equipment();
 		$equipment->type = $request->type;
-		$equipment->quantity = $request->quantity;
 		$equipment->status = $request->status;
 		$equipment->save();
 
@@ -76,7 +75,6 @@ class EquipmentController extends Controller
 	{
 		$equipment = Equipment::findOrFail($id);
 		$equipment->type = $request->type;
-		$equipment->quantity = $request->quantity;
 		$equipment->status = $request->status;
 		$equipment->save();
 

@@ -20,7 +20,6 @@ class EquipmentFactory extends Factory
 	{
 		return [
 			'type' => $this->faker->randomElement(['PC Desktop', 'Notebook', 'Monitor', 'Mouse', 'Teclado', 'Headset', 'Cadeira', 'Impressora', 'Cabo', 'Fonte']),
-			'quantity' => $this->faker->numberBetween(1, 10),
 			'status' => $this->faker->randomElement(['Disponível', 'Indisponível']),
 		];
 	}
