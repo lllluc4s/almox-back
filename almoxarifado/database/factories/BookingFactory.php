@@ -31,7 +31,7 @@ class BookingFactory extends Factory
 			'patrimony' => $this->faker->randomElement(['Braip', 'Kapsula', 'KPG']),
 			'quantity' => $this->faker->numberBetween(1, 10),
 			'bookingDate' => $this->faker->dateTimeBetween('now', '+1 years'),
-			'transaction' => $this->faker->randomElement(['Reserva', 'Devolução']),
+			'transaction' => $this->faker->randomElement(['Reserva', 'Devolução', 'Reserva (Já devolvido)']),
 		];
 	}
 }

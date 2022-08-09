@@ -41,7 +41,9 @@ class BookingController extends Controller
 		$user = User::find($equipmentBooking->user_id);
 		$equipment = Equipment::find($equipmentBooking->equipment_id);
 
-		if ($equipmentBooking->transaction == 'Reserva') {
+		if ($equipmentBooking->transaction === 'Reserva') {
+			$equipmentBooking->transaction = 'Reserva (Já devolvido)';
+
 			$booking = new Booking();
 			$booking->user_id = $equipmentBooking->user_id;
 			$booking->user_name = $user->name;
@@ -52,6 +54,7 @@ class BookingController extends Controller
 			$booking->bookingDate = now();
 			$booking->transaction = 'Devolução';
 
+			$equipmentBooking->save();
 			$booking->save();
 			$equipment->save();
 		} else {
